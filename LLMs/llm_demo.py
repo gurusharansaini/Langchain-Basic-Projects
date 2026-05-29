@@ -4,8 +4,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 llm = OpenAI(model = 'gpt-3.5-turbo-instruct')
-
-while input() != 'exit':
-    result = llm.invoke("what is the capital of india")
+e = input()
+while e != 'exit':
+    
+    result = llm.invoke(e)
     print("Answer : \n",result)
     print("-----------------------------------------------------------------------")
+    e = input()
