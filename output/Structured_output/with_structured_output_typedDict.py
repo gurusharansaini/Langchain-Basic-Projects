@@ -1,13 +1,16 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-from typing import TypedDict
+from typing import TypedDict,Annotated,Optional,Literal
 load_dotenv()
 
 model = ChatOpenAI()
 
 class Review(TypedDict):
-    summary :str
-    sentiment :str
+    summary :Annotated[str,"A breaf summary in the review"]
+    sentiment :Annotated[Literal["pos","cons"],"Return sentiment of the review either negative, positive"]
+    pros : Annotated[Optional[list[str]],"Write down all the pros inside a list"]
+    cons : Annotated[Optional[list[str]],"Write down all the cons inside a list"]
+    
 
 structured_model = model.with_structured_output(Review)
 
@@ -25,4 +28,4 @@ S-Pen support is unique and useful
                                  
 Review by Nitish Singh""")
 
-print(r)
+print(r.keys())
