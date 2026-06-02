@@ -10,6 +10,8 @@ class Review(TypedDict):
     sentiment :Annotated[Literal["pos","cons"],"Return sentiment of the review either negative, positive"]
     pros : Annotated[Optional[list[str]],"Write down all the pros inside a list"]
     cons : Annotated[Optional[list[str]],"Write down all the cons inside a list"]
+
+
     
 
 structured_model = model.with_structured_output(Review)
@@ -28,4 +30,4 @@ S-Pen support is unique and useful
                                  
 Review by Nitish Singh""")
 
-print(r.keys())
+print(r)
